@@ -3,6 +3,8 @@ const ethers = require('ethers')
 export const OrderPaid = 'Paid, payment failed'
 export const BalanceNotEnough = 'Your balance is insufficient'
 export const PaySuccess = 'Payment successful'
+export const StakeNodeSuccess = 'stake node successful'
+export const SetNodePriceSuccess = 'set node price successful'
 
 export const Error = 'Error parsing failed'
 
@@ -29,7 +31,7 @@ const handleErrorMsg = async(error) => {
   }
 }
 
-const contractAddress = '0x1621838ca728AA3D6f230dE04D79e348A98CC6D0'
+const contractAddress = '0xF7dC85d095408364E8277280C85689f476FF82bC'
 
 export const getNodePrice = async() => {
   const provider = await providerInit()
@@ -56,6 +58,32 @@ export const getNodes = async() => {
   const contract = new ethers.Contract(contractAddress, abi, provider)
   const nodes = await contract.getNodes()
   return nodes
+}
+
+export const stakeNode = async(node) => {
+  const provider = await providerInit()
+  const signer = provider.getSigner()
+  const contract = new ethers.Contract(contractAddress, abi, signer)
+  try {
+    const transaction = await contract.stake(node)
+    await transaction.wait()
+  } catch (error) {
+    return handleErrorMsg(error)
+  }
+  return StakeNodeSuccess
+}
+
+export const setNodePrice = async(node, amount) => {
+  const provider = await providerInit()
+  const signer = provider.getSigner()
+  const contract = new ethers.Contract(contractAddress, abi, signer)
+  try {
+    const transaction = await contract.addPrice(node, amount)
+    await transaction.wait()
+  } catch (error) {
+    return handleErrorMsg(error)
+  }
+  return SetNodePriceSuccess
 }
 
 export const countBuy = async(host, actor, count) => {

@@ -18,6 +18,11 @@
         >{{ v }}
         </v-btn>
       </div>
+      <div class="d-flex align-center">
+        <v-btn :to="{name: 'manage'}" text >
+          <span class="font-weight-regular text-capitalize text-caption">Manage</span>
+        </v-btn>
+      </div>
     </v-container>
   </v-app-bar>
 </template>

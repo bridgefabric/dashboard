@@ -48,7 +48,7 @@
 // import { fetchZeroAccessNodes } from '@/api'
 import FormDialog from './components/form-dialog'
 import GetDialog from './components/get-dialog'
-import { getNodePrice } from '@/utils/ethers'
+import { getNodePrice } from '@/utils/store'
 
 export default {
   components: { FormDialog, GetDialog },

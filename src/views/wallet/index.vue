@@ -79,7 +79,7 @@ import {
   bindWallet,
   getAllOrderTokens,
   withdrawAllOrderTokens
-} from '@/utils/ethers'
+} from '@/utils/store'
 import store from '@/store'
 import FormDialog from './components/form-dialog'
 

@@ -64,7 +64,7 @@
 <script>
 import FormDialog from './components/form-dialog'
 import { deleteZeroAccessClient, fetchZeroAccessClients, postZeroAccessClientsPayNotify } from '@/api'
-import { payOrder, OrderPaid, PaySuccess } from '@/utils/ethers'
+import { payOrder, OrderPaid, PaySuccess } from '@/utils/store'
 
 export default {
   components: { FormDialog },

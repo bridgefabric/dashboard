@@ -27,15 +27,18 @@
                 :rules="rule.actor"
                 required
             ></v-text-field>
-            <v-content>Count Left: {{left}}</v-content>
-            <v-btn color="primary" text @click="getAmount" :loading="submitting">Query
-            </v-btn>
+            <v-content class="text-center" style="color: rgb(253 224 71);" >Count Left: {{left}}</v-content>
           </v-container>
         </v-form>
+        <!-- <v-div margin-top="300"></v-div> -->
+        <!-- <v-btn color="primary" text @click="getAmount" :loading="submitting">Query
+        </v-btn> -->
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="primary" text @click="dialog = false">Close</v-btn>
+        <v-btn color="primary" text @click="getAmount" :loading="submitting">Query
+        </v-btn>
         <!-- <v-btn
             color="primary"
             text
@@ -48,7 +51,7 @@
 </template>
 <script>
 
-import { countCurrent } from '@/utils/ethers'
+import { countCurrent } from '@/utils/store'
 
 export default {
   props: ['node'],
@@ -78,6 +81,7 @@ export default {
       const form = { ...this.form }
       this.left = await countCurrent(this.node, form.actor, form.amount)
       this.submitting = false
+      // this.$message.success('success')
     }
   }
 }

@@ -40,7 +40,7 @@
   </v-dialog>
 </template>
 <script>
-import { changeWallet, getWallet } from '@/utils/ethers'
+import { changeWallet, getWallet } from '@/utils/store'
 import store from '@/store'
 
 export default {
