@@ -71,6 +71,9 @@ export default {
       const pay = await setNodePrice(this.node, this.amount)
       if (pay !== PaySuccess) {
         // faild
+        this.$message.warning('set node price failed')
+      } else {
+        this.$message.success('set node price success')
       }
       this.submitting = false
       this.dialog = false

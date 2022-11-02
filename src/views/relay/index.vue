@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="font-weight-thin text-h3 mt-10">{{ total }} Relays</h3>
+    <h3 class="font-weight-thin text-h3 mt-10">{{ total }} Actors</h3>
     <v-data-table
         :headers="tableHeaders"
         :items="tableItems"
@@ -82,12 +82,14 @@ export default {
         { name: 'callActor', cid: 'bafybeiezlskhcuoenhuh4stumq4algnuuv2uvgwymwp7p6augpqno7sg7u', desc: 'chenge input to uppercase then call save to ipfs actor' },
         { name: 'saveToIPFS', cid: 'bafybeig3akf4jm5xerhyh5fm6skzsyhrhdug63fl6eyuov7ggpv7yzsjdq', desc: 'save input to ipfs' }
       ]
+      this.total = this.tableItems.length
     },
     handleCount(v) {
       // this.query.limit_num = v
       // this.handleSearch()
     },
     viewDetail(item) {
+      this.$message.warning('under developing, please see description for detail for now')
       // const item = ref.data
 
       // deleteZeroAccessRelay(item.ID).then(_ => {

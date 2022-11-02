@@ -68,6 +68,9 @@ export default {
       const pay = await stakeNode(this.node)
       if (pay !== PaySuccess) {
         // faild
+        this.$message.warning('stake failed')
+      } else {
+        this.$message.success('stake success')
       }
       this.submitting = false
       this.dialog = false

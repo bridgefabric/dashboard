@@ -87,6 +87,9 @@ export default {
       const pay = await countBuy(this.node, form.actor, form.amount)
       if (pay !== PaySuccess) {
         // faild
+        this.$message.warning('buy failed')
+      } else {
+        this.$message.success('buy success')
       }
       this.submitting = false
       this.dialog = false

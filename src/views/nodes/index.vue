@@ -1,7 +1,6 @@
 <template>
   <div>
     <h3 class="font-weight-thin text-h3 mt-10">{{ total }} Nodes</h3>
-    <div class="text mt-4"> Nodes</div>
     <v-data-table
         :headers="tableHeaders"
         :items="tableItems"
@@ -78,6 +77,7 @@ export default {
     async getTableItems() {
       this.loading = true
       this.tableItems = await getNodePrice()
+      this.total = this.tableItems.length
       this.loading = false
       // fetchZeroAccessNodes(this.query).then(res => {
       //   this.tableItems = res.data.list || []
