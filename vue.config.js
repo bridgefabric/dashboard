@@ -1,9 +1,4 @@
 const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: [
-    'vuetify'
-  ]
-})
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -11,6 +6,6 @@ module.exports = defineConfig({
     plugins: [
       new NodePolyfillPlugin()
     ]
-  }
-
+  },
+  publicPath: process.env.NODE_ENV === 'production' ? '/dashboard/' : '/'
 })
