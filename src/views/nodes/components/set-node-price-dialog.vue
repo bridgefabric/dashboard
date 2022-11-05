@@ -43,7 +43,7 @@
 </template>
 <script>
 
-import { setNodePrice, PaySuccess } from '@/utils/store'
+import { setNodePrice, PaySuccess } from '@/utils/ethers'
 
 export default {
   data: () => ({

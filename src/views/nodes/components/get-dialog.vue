@@ -51,7 +51,7 @@
 </template>
 <script>
 
-import { countCurrent } from '@/utils/store'
+import { countCurrent } from '@/utils/ethers'
 
 export default {
   props: ['node'],

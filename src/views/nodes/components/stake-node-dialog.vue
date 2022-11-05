@@ -44,7 +44,7 @@
 </template>
 <script>
 
-import { stakeNode, PaySuccess } from '@/utils/store'
+import { stakeNode, PaySuccess } from '@/utils/ethers'
 
 export default {
   data: () => ({

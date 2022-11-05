@@ -54,7 +54,7 @@
 </template>
 <script>
 
-import { countBuy, PaySuccess } from '@/utils/store'
+import { countBuy, PaySuccess } from '@/utils/ethers'
 
 export default {
   props: ['node'],

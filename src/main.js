@@ -25,6 +25,25 @@ Vue.prototype.$message = {
   error: (msg = 'Error') => EventBus.$emit('app.message', msg, 'error'),
   warning: (msg = 'Warning') => EventBus.$emit('app.message', msg, 'warning')
 }
+if (window.ethereum !== undefined) {
+  // const chainId = await window.ethereum.request({ method: 'eth_chainId' })
+  // handleChainChanged(chainId)
+
+  window.ethereum.on('chainChanged', handleChainChanged)
+}
+
+function handleChainChanged(chainId) {
+  // We recommend reloading the page, unless you must do otherwise
+  // window.location.reload()
+  console.log(chainId)
+  if (chainId !== '0x13881') {
+  // if (chainId !== 80001) {
+    Vue.prototype.$message.warning('please change your metamask chain to polygon Mumbai')
+  } else {
+    window.location.reload()
+  }
+}
+Vue.prototype.$handleChainChanged = handleChainChanged
 
 new Vue({
   router,

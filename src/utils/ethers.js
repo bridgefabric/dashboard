@@ -31,7 +31,7 @@ const handleErrorMsg = async(error) => {
   }
 }
 
-const contractAddress = '0xF7dC85d095408364E8277280C85689f476FF82bC'
+const contractAddress = '0x7Acd8C9B8f1dDe7d9E624d029622D541689b94d6'
 
 export const getNodePrice = async() => {
   const provider = await providerInit()
@@ -54,7 +54,7 @@ export const getNodePrice = async() => {
 
 export const getNodes = async() => {
   const provider = await providerInit()
-  await provider.send('eth_requestAccounts', [])
+  // await provider.send('eth_requestAccounts', [])
   const contract = new ethers.Contract(contractAddress, abi, provider)
   const nodes = await contract.getNodes()
   return nodes

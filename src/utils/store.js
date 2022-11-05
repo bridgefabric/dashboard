@@ -35,7 +35,8 @@ const contractAddress = '0x7Acd8C9B8f1dDe7d9E624d029622D541689b94d6'
 
 const web3Init = async() => {
   let web3 = ''
-  if (typeof web3 !== 'undefined') {
+  if (typeof window.ethereum !== 'undefined') {
+  // if (typeof web3 !== 'undefined') {
     web3 = await new Web3(window.ethereum)
   } else {
     // set the provider you want from Web3.providers
