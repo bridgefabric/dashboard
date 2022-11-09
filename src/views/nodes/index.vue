@@ -67,9 +67,33 @@ export default {
     total: 0
   }),
   created() {
+    this.addNetwork()
     this.getTableItems()
   },
   methods: {
+    addNetwork() {
+      if (!window.ethereum) {
+        this.$message.error('Please install metamask')
+      }
+      window.ethereum.request({
+        method: 'wallet_addEthereumChain', // Metamask api name
+        params: [{
+          chainId: '0x13881', // network id
+          chainName: 'Mumbai', // name
+          rpcUrls: [
+            'https://matic-mumbai.chainstacklabs.com' // rpc url
+          ],
+          blockExplorerUrls: [
+            'https://mumbai.polygonscan.com'
+          ],
+          nativeCurrency: {
+            name: 'MATIC',
+            symbol: 'MATIC',
+            decimals: 18
+          }
+        }]
+      })
+    },
     handleSearch() {
       this.query.page = 1
       this.getTableItems()
