@@ -43,7 +43,7 @@
 </template>
 <script>
 
-import { setNodePrice, PaySuccess } from '@/utils/ethers'
+import { setNodePrice, SetNodePriceSuccess } from '@/utils/ethers'
 
 export default {
   data: () => ({
@@ -69,9 +69,9 @@ export default {
 
       // const form = { ...this.form }
       const pay = await setNodePrice(this.node, this.amount)
-      if (pay !== PaySuccess) {
+      if (pay !== SetNodePriceSuccess) {
         // faild
-        this.$message.warning('set node price failed')
+        this.$message.warning('set node price failed' + pay)
       } else {
         this.$message.success('set node price success')
       }

@@ -87,7 +87,7 @@ export default {
       const pay = await countBuy(this.node, form.actor, form.amount)
       if (pay !== PaySuccess) {
         // faild
-        this.$message.warning('buy failed')
+        this.$message.warning('buy failed' + pay)
       } else {
         this.$message.success('buy success')
       }

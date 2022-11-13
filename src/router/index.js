@@ -7,7 +7,8 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: '/nodes'
+    component: () => import('@/views/nodes')
+    // redirect: '/nodes'
     // component: () => import('@/views/HomeView')
   },
   {

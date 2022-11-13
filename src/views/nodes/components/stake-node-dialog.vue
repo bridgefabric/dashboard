@@ -44,7 +44,7 @@
 </template>
 <script>
 
-import { stakeNode, PaySuccess } from '@/utils/ethers'
+import { stakeNode, StakeNodeSuccess } from '@/utils/ethers'
 
 export default {
   data: () => ({
@@ -66,7 +66,7 @@ export default {
 
       // const form = { ...this.form }
       const pay = await stakeNode(this.node)
-      if (pay !== PaySuccess) {
+      if (pay !== StakeNodeSuccess) {
         // faild
         this.$message.warning('stake failed')
       } else {

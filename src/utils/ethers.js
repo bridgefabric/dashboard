@@ -64,10 +64,12 @@ export const stakeNode = async(node) => {
   const provider = await providerInit()
   const signer = provider.getSigner()
   const contract = new ethers.Contract(contractAddress, abi, signer)
+  console.log(node)
   try {
     const transaction = await contract.stake(node)
     await transaction.wait()
   } catch (error) {
+    console.log(error)
     return handleErrorMsg(error)
   }
   return StakeNodeSuccess
