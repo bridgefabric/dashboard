@@ -12,6 +12,7 @@ const providerInit = async() => {
   let provider = ''
   if (typeof window.ethereum !== 'undefined') {
     provider = new ethers.providers.Web3Provider(window.ethereum)
+    await provider.send('eth_requestAccounts', []) // <- this promps user to connect metamask
   } else {
     // set the provider you want from Web3.providers
     alert('Please install MetaMask')
