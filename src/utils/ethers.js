@@ -32,7 +32,7 @@ const handleErrorMsg = async(error) => {
   }
 }
 
-const contractAddress = '0x7Acd8C9B8f1dDe7d9E624d029622D541689b94d6'
+const contractAddress = '0x1c0142ab18f1a12b6E4cbF4Fb957bCDE08a7192B'
 
 export const getNodePrice = async() => {
   const provider = await providerInit()

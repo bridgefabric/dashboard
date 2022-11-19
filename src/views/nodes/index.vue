@@ -78,17 +78,14 @@ export default {
       window.ethereum.request({
         method: 'wallet_addEthereumChain', // Metamask api name
         params: [{
-          chainId: '0x13881', // network id
-          chainName: 'Mumbai', // name
+          chainId: '0x7ab7', // network id
+          chainName: 'Filecoin — Wallaby testnet', // name
           rpcUrls: [
-            'https://matic-mumbai.chainstacklabs.com' // rpc url
-          ],
-          blockExplorerUrls: [
-            'https://mumbai.polygonscan.com'
+            'https://wallaby.node.glif.io/rpc/v0' // rpc url
           ],
           nativeCurrency: {
-            name: 'MATIC',
-            symbol: 'MATIC',
+            name: 'tFIL',
+            symbol: 'tFIL',
             decimals: 18
           }
         }]

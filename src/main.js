@@ -36,9 +36,9 @@ function handleChainChanged(chainId) {
   // We recommend reloading the page, unless you must do otherwise
   // window.location.reload()
   console.log(chainId)
-  if (chainId !== '0x13881') {
+  if (chainId !== '0x7ab7') {
   // if (chainId !== 80001) {
-    Vue.prototype.$message.warning('please change your metamask chain to polygon Mumbai')
+    Vue.prototype.$message.warning('please change your metamask chain to Filecoin — Wallaby testnet')
   } else {
     window.location.reload()
   }
