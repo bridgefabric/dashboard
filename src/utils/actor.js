@@ -29,7 +29,7 @@ const handleErrorMsg = async(error) => {
   }
 }
 
-const contractAddress = '0x60Af9e11e2b72F87264959A51cb12251fe8B41d5'
+const contractAddress = '0x0d47016AEEF01e3A280cD6Ec84cEb9642226Fceb'
 
 export const getActors = async() => {
   const provider = await providerInit()
