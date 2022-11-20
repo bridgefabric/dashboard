@@ -47,7 +47,7 @@
 </template>
 <script>
 import { storeObj } from '@/utils/w3s'
-// import { addActor, Success } from '@/utils/actor'
+import { addActor, Success } from '@/utils/actor'
 
 export default {
   data: () => ({
@@ -83,13 +83,13 @@ export default {
       const form = { ...this.form }
       const cid = await storeObj(form)
       console.log(cid)
-      // const pay = await addActor(form.cid, cid)
-      // if (pay !== Success) {
-      //   // faild
-      //   this.$message.warning('add failed' + pay)
-      // } else {
-      //   this.$message.success('add success')
-      // }
+      const res = await addActor(form.cid, cid)
+      if (res !== Success) {
+        // faild
+        this.$message.warning('add failed' + res)
+      } else {
+        this.$message.success('add success')
+      }
 
       this.submitting = false
       this.dialog = false

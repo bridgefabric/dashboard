@@ -1,5 +1,6 @@
 const abi = require('../../contract/artifacts/contracts/ActorMarket.json')
 const ethers = require('ethers')
+const w3s = require('./w3s')
 export const Success = 'successful'
 
 export const Error = 'Error parsing failed'
@@ -28,7 +29,7 @@ const handleErrorMsg = async(error) => {
   }
 }
 
-const contractAddress = '0x1C20d84ec2C00Ab527088Ba2F7744916FD283d49'
+const contractAddress = '0x60Af9e11e2b72F87264959A51cb12251fe8B41d5'
 
 export const getActors = async() => {
   const provider = await providerInit()
@@ -42,10 +43,12 @@ export const getActors = async() => {
   for (let i = 0; i < nodes.length; i++) {
     const descCidInfo = await contract.getActor(nodes[i])
     const descCid = descCidInfo.desCid
+    const des = await w3s.getFromIPFSIO(descCid)
     // todo get desc form filecoin
     actors.push({
       cid: nodes[i],
-      desc: descCid
+      desc: des.data.desc,
+      name: des.data.name
     })
   }
 

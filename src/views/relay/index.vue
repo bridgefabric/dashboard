@@ -47,7 +47,7 @@
 // import ConfirmDialog from '@/components/confirm-dialog'
 import FormDialog from './components/form-dialog'
 
-import { get } from '@/utils/w3s'
+import { getActors } from '@/utils/actor'
 
 export default {
   // components: { PemDialog, FormDialog, ConfirmDialog },
@@ -78,11 +78,12 @@ export default {
       // this.getTableItems()
     },
     async getTableItems() {
-      this.tableItems = [
-        { name: 'upperCase', cid: 'bafybeifufo3jngp674qr6nmq4hpnkfdleo43vsohvgotn2dglin3yihwau', desc: 'chenge input to uppercase' },
-        { name: 'callActor', cid: 'bafybeiezlskhcuoenhuh4stumq4algnuuv2uvgwymwp7p6augpqno7sg7u', desc: 'chenge input to uppercase then call save to ipfs actor' },
-        { name: 'saveToIPFS', cid: 'bafybeig3akf4jm5xerhyh5fm6skzsyhrhdug63fl6eyuov7ggpv7yzsjdq', desc: 'save input to ipfs' }
-      ]
+      this.tableItems = await getActors()
+      // [
+      //   { name: 'upperCase', cid: 'bafybeifufo3jngp674qr6nmq4hpnkfdleo43vsohvgotn2dglin3yihwau', desc: 'chenge input to uppercase' },
+      //   { name: 'callActor', cid: 'bafybeiezlskhcuoenhuh4stumq4algnuuv2uvgwymwp7p6augpqno7sg7u', desc: 'chenge input to uppercase then call save to ipfs actor' },
+      //   { name: 'saveToIPFS', cid: 'bafybeig3akf4jm5xerhyh5fm6skzsyhrhdug63fl6eyuov7ggpv7yzsjdq', desc: 'save input to ipfs' }
+      // ]
       this.total = this.tableItems.length
     },
     handleCount(v) {
@@ -90,10 +91,17 @@ export default {
       // this.handleSearch()
     },
     async viewDetail(item) {
-      this.$message.warning('under developing, please see description for detail for now')
-      const cid = 'bafybeidu62bhmkp6me4itdiqw6qxasl3xrnlcmfvc4zph5xax4o3cxzr5q' // 'bafybeihemxxq2lolsq2oqgkchoyba3v4fdxw4gta2spy6ohggt3eyb3u2y'
-      const content = await get(cid)
-      console.log(content)
+      this.$message.warning('more info is under developing, please see description for detail for now')
+      // const cid = 'bafybeidu62bhmkp6me4itdiqw6qxasl3xrnlcmfvc4zph5xax4o3cxzr5q' // 'bafybeihemxxq2lolsq2oqgkchoyba3v4fdxw4gta2spy6ohggt3eyb3u2y'
+      // getFromIPFSIO(cid).then(res => {
+      //   console.log(res.data)
+      //   debugger
+      // }).finally(() => {
+      //   // this.loadingResource = false
+      // })
+
+      // const a = await getActors()
+      // console.log(a)
       // const item = ref.data
 
       // deleteZeroAccessRelay(item.ID).then(_ => {

@@ -1,5 +1,5 @@
 import { Web3Storage } from 'web3.storage'
-import request from `./request.js`
+import request from './request'
 
 const VUE_APP_WEB3STORAGE_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGU5RThiYzBGNUQzZjFmNDRmN2I2NkI3NmJkRDQ5YzZCOGUwMDkxMjAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2Njg4NTU4OTI3MDEsIm5hbWUiOiJmZXZtIn0.kja3kVHLmf9rw9pKSzAVrSZATCnso7_emOf3CfT7SRQ'
 
@@ -34,7 +34,11 @@ export async function get(cid) {
 }
 
 export async function getFromIPFSIO(cid) {
-    request()
+  return request({
+    // url: 'https://ipfs.io/ipfs/' + cid + '/description.json',
+    url: 'https://' + cid + '.ipfs.w3s.link/description.json',
+    method: 'get'
+  })
 }
 
 export function makeFileObjects(obj) {
@@ -66,7 +70,7 @@ export async function storeObj(obj) {
   return cid
 }
 
-async function checkStatus(cid) {
+export async function checkStatus(cid) {
   const client = makeStorageClient()
   const status = await client.status(cid)
   console.log(status)
@@ -76,6 +80,13 @@ async function checkStatus(cid) {
 }
 
 // replace with your own CID to see info about your uploads!
-checkStatus('bafybeidu62bhmkp6me4itdiqw6qxasl3xrnlcmfvc4zph5xax4o3cxzr5q')
+// checkStatus('bafybeidu62bhmkp6me4itdiqw6qxasl3xrnlcmfvc4zph5xax4o3cxzr5q')
 
-get('bafybeidu62bhmkp6me4itdiqw6qxasl3xrnlcmfvc4zph5xax4o3cxzr5q')
+// get('bafybeidu62bhmkp6me4itdiqw6qxasl3xrnlcmfvc4zph5xax4o3cxzr5q')
+
+// async function test() {
+//   const a = await getFromIPFSIO('bafybeidu62bhmkp6me4itdiqw6qxasl3xrnlcmfvc4zph5xax4o3cxzr5q')
+//   console.log(a)
+// }
+
+// test()
