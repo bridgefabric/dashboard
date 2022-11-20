@@ -7,5 +7,5 @@ module.exports = defineConfig({
       new NodePolyfillPlugin()
     ]
   },
-  publicPath: process.env.NODE_ENV === 'production' ? '/dashboard/' : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/'
 })
