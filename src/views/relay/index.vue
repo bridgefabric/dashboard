@@ -22,8 +22,8 @@
           ></v-text-field>
           <v-spacer></v-spacer>
           <!-- <form-dialog @on-success="handleSearch"/> -->
-          <confirm-dialog @on-success="handleSearch"/>
-          <pem-dialog @on-success="handleSearch" :data="item"/>
+          <!-- <confirm-dialog @on-success="handleSearch"/> -->
+          <form-dialog @on-success="handleSearch"/>
         </v-toolbar>
       </template>
       <!-- <template v-slot:item.action="{ item }">
@@ -43,14 +43,15 @@
   </div>
 </template>
 <script>
-import PemDialog from '@/components/pem-dialog'
-import ConfirmDialog from '@/components/confirm-dialog'
-// import FormDialog from './components/form-dialog'
-// import { deleteZeroAccessRelay, fetchZeroAccessRelays } from '@/api'
+// import PemDialog from '@/components/pem-dialog'
+// import ConfirmDialog from '@/components/confirm-dialog'
+import FormDialog from './components/form-dialog'
+
+import { get } from '@/utils/w3s'
 
 export default {
   // components: { PemDialog, FormDialog, ConfirmDialog },
-  components: { PemDialog, ConfirmDialog },
+  components: { FormDialog },
   // components: { ConfirmDialog },
   data: () => ({
     loading: false,
@@ -88,8 +89,11 @@ export default {
       // this.query.limit_num = v
       // this.handleSearch()
     },
-    viewDetail(item) {
+    async viewDetail(item) {
       this.$message.warning('under developing, please see description for detail for now')
+      const cid = 'bafybeidu62bhmkp6me4itdiqw6qxasl3xrnlcmfvc4zph5xax4o3cxzr5q' // 'bafybeihemxxq2lolsq2oqgkchoyba3v4fdxw4gta2spy6ohggt3eyb3u2y'
+      const content = await get(cid)
+      console.log(content)
       // const item = ref.data
 
       // deleteZeroAccessRelay(item.ID).then(_ => {

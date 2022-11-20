@@ -71,6 +71,11 @@ export default {
     this.getTableItems()
   },
   methods: {
+    // async connect() {
+    //   const provider = new ethers.providers.Web3Provider(window.ethereum);
+    //   await provider.send('eth_requestAccounts', []); // <- this promps user to connect metamask
+    //   const signer = provider.getSigner();
+    // },
     addNetwork() {
       if (!window.ethereum) {
         this.$message.error('Please install metamask')

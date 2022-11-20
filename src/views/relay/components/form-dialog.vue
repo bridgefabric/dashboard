@@ -11,11 +11,12 @@
     </template>
     <v-card>
       <v-card-title>
-        <span class="text-h5">New relay</span>
+        <span class="text-h5">New Actor</span>
       </v-card-title>
       <v-card-text>
         <v-form v-model="valid">
           <v-container>
+            <v-text-field v-model="form.cid" label="CID" :rules="rule.cid" required></v-text-field>
             <v-text-field
                 v-model="form.name"
                 label="Name"
@@ -23,25 +24,9 @@
                 required
             ></v-text-field>
             <v-text-field
-                v-model="form.host"
-                label="Host"
-                :rules="rule.host"
-                required
-            ></v-text-field>
-            <v-text-field
-                v-model.number="form.port"
-                label="Listen port"
-                :min="1"
-                :max="65535"
-                type="number"
-                required
-            ></v-text-field>
-            <v-text-field
-                v-model.number="form.out_port"
-                label="Expose port"
-                :min="1"
-                :max="65535"
-                type="number"
+                v-model="form.desc"
+                label="Description"
+                :rules="rule.desc"
                 required
             ></v-text-field>
           </v-container>
@@ -61,7 +46,8 @@
   </v-dialog>
 </template>
 <script>
-import { postZeroAccessRelay } from '@/api'
+import { storeObj } from '@/utils/w3s'
+// import { addActor, Success } from '@/utils/actor'
 
 export default {
   data: () => ({
@@ -71,20 +57,19 @@ export default {
     loadingServer: false,
     submitting: false,
     form: {
+      cid: '',
       name: '',
-      host: '',
-      port: null,
-      out_port: null
+      desc: ''
     },
     rule: {
       name: [
         v => !!v || 'Name is required'
       ],
-      host: [
-        v => !!v || 'Host is required'
+      desc: [
+        v => !!v || 'Description is required'
       ],
-      port: [
-        v => !!v || 'Port is required'
+      cid: [
+        v => !!v || 'CID is required'
       ],
       out_port: [
         v => !!v || 'Expose port is required'
@@ -92,17 +77,22 @@ export default {
     }
   }),
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       this.submitting = true
 
       const form = { ...this.form }
-      postZeroAccessRelay(form).then(res => {
-        this.$emit('on-success')
-        this.$message.success()
-        this.dialog = false
-      }).finally(() => {
-        this.submitting = false
-      })
+      const cid = await storeObj(form)
+      console.log(cid)
+      // const pay = await addActor(form.cid, cid)
+      // if (pay !== Success) {
+      //   // faild
+      //   this.$message.warning('add failed' + pay)
+      // } else {
+      //   this.$message.success('add success')
+      // }
+
+      this.submitting = false
+      this.dialog = false
     }
   }
 }
